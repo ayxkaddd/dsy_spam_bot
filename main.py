@@ -15,6 +15,7 @@ def ebatMoskaliv(_, msg):
     duration = msg.text.split(' ')[-1]
     try:
         while True:
+            time.sleep(int(duration))
             msgId = random.choice(msg_list)
             app.forward_messages(
                 chat_id = msg.chat.id,
@@ -22,7 +23,6 @@ def ebatMoskaliv(_, msg):
                 message_ids = int(msgId)
             )
             print(f'Done! msg sent to {msg.chat.title}')
-            time.sleep(int(duration))
     except Exception as ex:
         print(f'some exception - {ex}')
 
