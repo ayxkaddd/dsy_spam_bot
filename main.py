@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 
 app = Client('my_account')
 
-msg_list = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+msg_list = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 56, 68]
 
 
 @app.on_message(filters.command('spam', prefixes='$'))
