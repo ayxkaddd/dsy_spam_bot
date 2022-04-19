@@ -1,6 +1,7 @@
 import os
-import random
+import sys
 import time
+import random
 
 from pyrogram import Client, filters
 
@@ -26,6 +27,12 @@ def ebatMoskaliv(_, msg):
     except Exception as ex:
         print(f'some exception - {ex}')
 
+        
+@app.on_message(filters.command('stop', prefixes='$'))
+def stop(_, msg):
+    print('ok stop\npress ctrl + z')
+    sys.exit()
+       
 
 if __name__ == '__main__':
     app.run()
