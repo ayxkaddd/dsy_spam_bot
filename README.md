@@ -1,4 +1,4 @@
-# spam_to_russia
+# dsy_spam_bot
 
 - в файл config.ini вставляєте api_id i api_hash з офф сайту тг (https://my.telegram.org/auth)
 - ше треба на канал підписатися цейво (https://t.me/likahqjq) там тексти
