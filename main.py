@@ -9,7 +9,7 @@ from pyrogram import Client, filters
 
 app = Client('my_account')
 
-msg_list = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 56, 68, 69]
+msg_list = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 68, 69]
 
 rpc = DiscordRPC.RPC.Set_ID(app_id=971671418238541894)
 
@@ -26,34 +26,36 @@ def ebatMoskaliv(_, msg):
     global msg_list, button
     duration = msg.text.split(' ')[-1]
     count = 0
+    chat = msg.chat.title
+
+    rpc.set_activity(
+        state="Доєднуйся до ДСУ",
+        details=f"Козак спамить в чат: {chat}",
+        timestamp=rpc.timestamp(),
+        large_image="dsy_logo",
+        large_text="DsyBot",
+        buttons=button
+    )
+
     try:
         while True:
             count += 1
-            rpc.set_activity(
-                  state="Козак спамить русні! Доєднуйся до ДСУ",
-                  details=f"Повідомлень відправлено: {count}",
-                  timestamp=rpc.timestamp(),
-                  large_image="dsy_logo",
-                  large_text="DsyBot",
-                  buttons=button
-                )
             time.sleep(int(duration))
             msgId = random.choice(msg_list)
             app.forward_messages(
-                chat_id = msg.chat.id,
-                from_chat_id = -1001712265605,
-                message_ids = int(msgId)
-            )
+                    chat_id = msg.chat.id,
+                    from_chat_id = -1001712265605,
+                    message_ids = int(msgId)
+                )
             print(f'Done! msg sent to {msg.chat.title}')
     except Exception as ex:
-        print(f'some exception - {ex}')
+        print(f'some exception: {ex}')
 
-        
 @app.on_message(filters.command('stop', prefixes='$'))
 def stop(_, msg):
     print('ok stop\npress ctrl + z')
     sys.exit()
-       
+
 
 if __name__ == '__main__':
     app.run()
