@@ -1,0 +1,3 @@
+Pyrogram==1.2.20
+TgCrypro==1.2.3
+discord-rpc==3.0
